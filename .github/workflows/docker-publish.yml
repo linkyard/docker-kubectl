@@ -15,6 +15,7 @@ on:
 
 env:
   IMAGE_NAME: kubectl
+  IMAGE_ALT_NAME: eu.gcr.io/linkyard-191615/linkyard-cloud/kubectl
 
 jobs:
   # Run tests.
@@ -51,6 +52,9 @@ jobs:
       - name: Log into registry
         run: echo "${{ secrets.CR_PAT }}" | docker login ghcr.io -u ${{ secrets.CR_USER }} --password-stdin
 
+      - name: Log into alternate registry
+        run: echo "${{ secrets.GCR_JSON_KEY }}" | docker login ghcr.io -u _json_key --password-stdin
+
       - name: Push image
         run: |
           IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
@@ -72,3 +76,6 @@ jobs:
 
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
+
+          docker tag $IMAGE_NAME $IMAGE_ALT_NAME:$VERSION
+          docker push $IMAGE_ALT_NAME:$VERSION
