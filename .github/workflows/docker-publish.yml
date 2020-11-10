@@ -53,7 +53,7 @@ jobs:
         run: echo "${{ secrets.CR_PAT }}" | docker login ghcr.io -u ${{ secrets.CR_USER }} --password-stdin
 
       - name: Log into alternate registry
-        run: echo "${{ secrets.GCR_JSON_KEY }}" | docker login eu.gcr.io -u _json_key --password-stdin
+        run: echo "${{ secrets.GCR_JSON_KEY }}" | base64 -d | docker login eu.gcr.io -u _json_key --password-stdin
 
       - name: Push image
         run: |
