@@ -24,5 +24,8 @@ It needs the following parameters:
 
 
 ## Usage
+It's double published (github and private gcr repo).
 
 `docker run ghcr.io/linkyard/kubectl`
+or
+`docker run eu.gcr.io/linkyard-191615/linkyard-cloud/kubectl`
