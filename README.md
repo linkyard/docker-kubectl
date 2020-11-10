@@ -1,3 +1,5 @@
+![Docker](https://github.com/linkyard/docker-kubectl/workflows/Docker/badge.svg)
+
 # Docker image with kubectl and some useful tooling
 
 Based on alpine.
@@ -19,3 +21,8 @@ It needs the following parameters:
 - `KUBERNETES_URL`: URL to the kubernetes cluster
 - `KUBERNETES_CA`: Base64 encoded CA certifcate for the connection to the cluster
 - `KUBERNETES_TOKEN`: Token to authenticate with the cluster
+
+
+## Usage
+
+`docker run ghcr.io/linkyard/kubectl`
